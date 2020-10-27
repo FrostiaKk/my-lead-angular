@@ -1,0 +1,62 @@
+<div fxLayoutAlign="center top" fxFlexFill class="main-div">
+  <mat-card fxFlex="75">
+    <mat-toolbar color="primary">{{title}}<span class="example-spacer"></span><button (click)="return()" mat-raised-button>Return</button></mat-toolbar>
+    <div fxLayoutAlign="center center" *ngIf="error" class="error-line form-text">{{error}}</div>
+    <div fxLayoutAlign="center center" *ngIf="success" class="success-line form-text">{{success}}</div>
+    <mat-spinner fxLayoutAlign="center center" *ngIf="loading"></mat-spinner>
+    <form enctype="multipart/form-data" fxLayoutAlign="stretch" fxLayout="column" class="login-form" [formGroup]="itemForm" (ngSubmit)="itemProcess()">
+      <mat-form-field>
+        <mat-label>Name</mat-label>
+        <input matInput placeholder="item..." formControlName="name">
+      </mat-form-field>
+      <div *ngIf="name.invalid && (name.dirty || name.touched)"
+           class="form-text text-muted">
+        <div *ngIf="name.errors?.required">
+          Name is required.
+        </div>
+        <div *ngIf="name.errors?.name">
+          Invalid name.
+        </div>
+      </div>
+
+      <mat-form-field>
+        <mat-label>Description</mat-label>
+        <textarea matInput placeholder="Description..." formControlName="description"></textarea>
+      </mat-form-field>
+      <div *ngIf="description.invalid && (description.dirty || description.touched)"
+           class="form-text text-muted">
+        <div *ngIf="description.errors?.required">
+          Description is required.
+        </div>
+      </div>
+      <mat-form-field class="example-chip-list">
+        <mat-chip-list #chipList aria-label="Prices">
+          <mat-chip *ngFor="let price of prices" [selectable]="selectable"
+                    [removable]="removable" (removed)="remove(price)">
+            {{price.name}}
+            <mat-icon matChipRemove *ngIf="removable">cancel</mat-icon>
+          </mat-chip>
+          <input placeholder="New price..." formControlName="price"
+                 [matChipInputFor]="chipList"
+                 [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+                 [matChipInputAddOnBlur]="addOnBlur"
+                 (matChipInputTokenEnd)="add($event)">
+        </mat-chip-list>
+      </mat-form-field>
+      <div *ngIf="price.invalid && (price.dirty || price.touched)"
+           class="form-text text-muted">
+        <div *ngIf="price.errors?.required">
+          Price is required.
+        </div>
+      </div>
+        <mat-label class="image-label">Image</mat-label>
+      <div class="field upload">
+        <label><em>Choose image...</em></label>
+      <input type="file" name="file" accept="image/png, image/jpeg" (change)="uploadFile($event)">
+      </div>
+      <img src="{{fileImg}}" *ngIf="fileImg" class="thumbnail">
+      <p *ngIf="fileName">Chosen image: {{fileName}}</p>
+      <button class="submit-form-btn" mat-raised-button color="primary" [disabled] = "(!itemForm.valid) || loading" type="submit">{{buttonText}}</button>
+    </form>
+  </mat-card>
+</div>

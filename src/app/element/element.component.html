@@ -1,0 +1,12 @@
+<div fxLayoutAlign="center top" fxFlexFill class="main-div">
+  <mat-card fxFlex="50">
+    <mat-toolbar color="primary">{{name}}<span class="example-spacer"></span><button (click)="return()" mat-raised-button>Return</button></mat-toolbar>
+    <img src="{{img}}" alt="" class="center">
+    <div class="center" style="text-align: center"><strong>{{priceText}}: {{prices}}</strong></div>
+    <mat-card-content>
+      <p class="description">
+        {{description}}
+      </p>
+    </mat-card-content>
+  </mat-card>
+</div>

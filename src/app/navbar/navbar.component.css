@@ -1,0 +1,12 @@
+.example-spacer {
+  flex: 1 1 auto;
+}
+.navbar-link {
+  padding: 10px;
+}
+.navbar-link a:visited {
+  color: black;
+}
+.navbar-link a:hover {
+  font-size: 22px;
+}

@@ -1,0 +1,41 @@
+<div fxLayoutAlign="center top" fxFlexFill class="main-div">
+  <mat-card fxFlex="75">
+    <mat-toolbar color="primary">Items</mat-toolbar>
+    <mat-form-field>
+      <mat-label>Filter</mat-label>
+      <input matInput (keyup)="applyFilter($event)" placeholder="Example name" #input>
+    </mat-form-field>
+    <div class="mat-elevation-z8">
+      <table mat-table [dataSource]="data" matSort matSortActive="created" matSortDisableClear matSortDirection="desc">
+
+        <!-- Id Column -->
+        <ng-container matColumnDef="img">
+          <th mat-header-cell *matHeaderCellDef> Item </th>
+          <td (click)="showItem(item.id)" mat-cell *matCellDef="let item"><img src="{{storagePath + item.file.thumbnail}}" alt=""></td>
+        </ng-container>
+
+        <!-- Name Column -->
+        <ng-container matColumnDef="name">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> Name </th>
+          <td (click)="showItem(item.id)" mat-cell *matCellDef="let item"> {{item.name}} </td>
+        </ng-container>
+
+        <!-- Description Column -->
+        <ng-container matColumnDef="description">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> Description </th>
+          <td (click)="showItem(item.id)" mat-cell *matCellDef="let item"> {{item.description.slice(0, 40)}}... </td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="columnsToDisplay"></tr>
+        <tr mat-row *matRowDef="let row; columns: columnsToDisplay;"></tr>
+
+        <!-- Row shown when there is no matching data. -->
+        <tr class="mat-row" *matNoDataRow>
+          <td class="mat-cell" colspan="4">No data matching the filter "{{input.value}}"</td>
+        </tr>
+      </table>
+      <mat-paginator [length]="resultsLength" [pageSize]="5"></mat-paginator>
+    </div>
+  </mat-card>
+</div>
+

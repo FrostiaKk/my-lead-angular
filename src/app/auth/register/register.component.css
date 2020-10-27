@@ -1,0 +1,22 @@
+.main-div mat-card {
+  padding: 0px;
+}
+.login-form {
+  padding: 20px;
+}
+.text-muted {
+  color: red;
+}
+.text-muted {
+  color: red;
+}
+.error-line {
+  margin-top: 10px;
+  padding: 10px;
+  border-radius: 10px;
+  border: 1px solid #f44336;
+  margin-left: 10px;
+  margin-right: 10px;
+  background: #f44336;
+  color: white;
+}

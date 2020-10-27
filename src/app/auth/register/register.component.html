@@ -1,0 +1,64 @@
+<div fxLayoutAlign="center center" fxFlexFill class="main-div">
+  <mat-card fxFlex="25">
+    <mat-toolbar color="primary">Register</mat-toolbar>
+    <div fxLayoutAlign="center center" *ngIf="error" class="error-line form-text">{{error}}</div>
+    <form fxLayoutAlign="stretch" fxLayout="column" class="login-form" [formGroup]="registerForm" (ngSubmit)="registerUser()">
+      <mat-form-field>
+        <mat-label>Name</mat-label>
+        <input matInput placeholder="Mike" formControlName="name">
+      </mat-form-field>
+      <div *ngIf="name.invalid && (name.dirty || name.touched)"
+           class="form-text text-muted">
+        <div *ngIf="name.errors?.required">
+          Name is required.
+        </div>
+        <div *ngIf="name.errors?.name">
+          Invalid name.
+        </div>
+      </div>
+
+      <mat-form-field>
+        <mat-label>Email</mat-label>
+        <input matInput placeholder="mike@gmail.com" formControlName="email">
+      </mat-form-field>
+      <div *ngIf="email.invalid && (email.dirty || email.touched)"
+           class="form-text text-muted">
+        <div *ngIf="email.errors?.required">
+          Email is required.
+        </div>
+        <div *ngIf="email.errors?.email">
+          Invalid email address.
+        </div>
+      </div>
+
+      <mat-form-field>
+        <mat-label>Password</mat-label>
+        <input matInput type="password" placeholder="Password" formControlName="password">
+      </mat-form-field>
+      <div *ngIf="password.invalid && (password.dirty || password.touched)"
+           class="form-text text-muted">
+        <div *ngIf="password.errors?.required">
+          Password is required.
+        </div>
+        <div *ngIf="password.errors?.minlength">
+          Password must be 5 charcter long
+        </div>
+      </div>
+      <mat-form-field>
+        <mat-label>Confirm password</mat-label>
+        <input matInput type="password" placeholder="Password" formControlName="password_confirmation">
+      </mat-form-field>
+      <div *ngIf="password_confirmation.invalid && (password_confirmation.dirty || password_confirmation.touched)"
+           class="form-text text-muted">
+        <div *ngIf="password_confirmation.errors?.required">
+          Confirm Password is required.
+        </div>
+        <div *ngIf="password_confirmation.errors?.minlength">
+          Confirm Password must be at least 5 characters long.
+        </div>
+      </div>
+      <button mat-raised-button color="primary" [disabled] = "!registerForm.valid || loading" type="submit">
+        <mat-spinner *ngIf="loading"></mat-spinner>Register</button>
+    </form>
+  </mat-card>
+</div>

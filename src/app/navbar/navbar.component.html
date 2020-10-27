@@ -1,0 +1,14 @@
+<mat-toolbar color="primary">
+  <img src="{{logo}}" alt="" class="center">
+  <span class="example-spacer"></span>
+  <span class="navbar-link"><a class="nav-link" routerLink="/home">Home</a></span>
+  <div *ngIf="!this.loggedIn || !this.msgFromHome">
+  <span class="navbar-link"><a class="nav-link" routerLink="/login">Login</a></span>
+  <span class="navbar-link"><a class="nav-link" routerLink="/register">Register</a></span>
+  </div>
+  <div *ngIf="this.loggedIn || this.msgFromHome">
+    <span class="navbar-link"><a class="nav-link" routerLink="/admin/items">Admin</a></span>
+    <span class="navbar-link"><a class="nav-link" routerLink="/login">Logout</a></span>
+  </div>
+</mat-toolbar>
+

@@ -1,0 +1,50 @@
+.main-div mat-card {
+  padding: 0px;
+  margin-top: 50px;
+}
+table {
+  width: 100%;
+}
+
+.mat-form-field {
+  font-size: 14px;
+  width: 100%;
+}
+
+td, th {
+  width: 25%;
+}
+.example-spacer {
+  flex: 1 1 auto;
+}
+.action-btn {
+  margin: 5px;
+}
+.text-muted {
+  background: #f44336;
+  color: white;
+}
+.success-line {
+  padding: 10px;
+  color: black;
+  background:  #64ffda;
+  margin-top: 10px;
+  border-radius: 10px;
+  border: 1px solid #64ffda;
+  margin-left: 10px;
+  margin-right: 10px;
+}
+.error-line {
+  margin-top: 10px;
+  padding: 10px;
+  border-radius: 10px;
+  border: 1px solid #f44336;
+  margin-left: 10px;
+  margin-right: 10px;
+}
+th {
+  font-weight: bold;
+}
+td {
+  cursor: pointer;
+}
